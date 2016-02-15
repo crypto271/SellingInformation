@@ -16,8 +16,13 @@ class Verifier {
 
 	public:
 	std::vector<B> v;
-	int i;
-	virtual int getI(){ return i; }
+	int i = -1;
+	virtual int getI(){ 
+    if  (i == -1) {
+      throw ProtocolException("i is not set");
+    }
+    return i;
+  }
 	bool res;
 };
 

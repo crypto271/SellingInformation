@@ -81,11 +81,10 @@ Short description.
   sufficient funds for payment and fees.
 
 Setup:
-  - install make, g++, cryptopp, bitcoinj, thift
+  - install make, g++, javac, cryptopp, bitcoinj, thift, ant
 
 Compiling:
-  - run make in all directories
-  - run ant in bitcoin/java
+  make
     
 Running:
   - in bitcoin/java
@@ -152,7 +151,16 @@ Design decisions:
   time lock of a secret that enable Buyer to get back Bitcoins
   if Seller won't redeem them.
     In the sell-information protocol the first part is to execute
-  cut-and-choose of signature-key. 
+  cut-and-choose of signature-key. Later parties continue protocol
+  to exchange and prove validity of square roots. Finally the last
+  steps are payment and retrieval of the factorization or
+  breaking time lock and buyer getting money back. 
 
-
-
+  - Thrift and communication between main and servers with bitcoin
+  utilities. 
+    Thrift is a framework for creating server/client based systems.
+  In this case main process uses RPC to request different actions
+  to be executed. Any data sent between those to components need
+  to be serialized and deserialized which requires extra attention
+  and testing. 
+  
